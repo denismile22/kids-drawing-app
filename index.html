@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kids Drawing & Coloring Game</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2348bb78%22 stroke-width=%222.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><circle cx=%2212%22 cy=%2212%22 r=%2210%22 fill=%22%2348bb78%22/><circle cx=%228%22 cy=%229%22 r=%222%22 fill=%22%23ffffff%22/><circle cx=%2216%22 cy=%229%22 r=%222%22 fill=%22%23ffffff%22/><circle cx=%2212%22 cy=%2216%22 r=%222%22 fill=%22%23ffffff%22/></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Starry & Bat Halloween Themed Background -->
+    <div class="star-bg"></div>
+    <svg class="bat-decor bat-1" viewBox="0 0 100 60">
+        <path d="M 0 30 Q 25 0 50 25 Q 75 0 100 30 Q 75 25 50 45 Q 25 25 0 30 Z" />
+    </svg>
+    <svg class="bat-decor bat-2" viewBox="0 0 100 60">
+        <path d="M 0 30 Q 25 0 50 25 Q 75 0 100 30 Q 75 25 50 45 Q 25 25 0 30 Z" />
+    </svg>
+
+    <!-- Confetti layer for celebrations -->
+    <div id="confetti-layer" class="confetti-layer"></div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="header-left">
+            <button class="icon-btn" id="parental-btn" title="Kunci Orang Tua">
+                <!-- Two user avatars icon -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="8" cy="8" r="4"/>
+                    <path d="M 1 20 C 1 15 4 14 8 14 C 12 14 15 15 15 20 Z"/>
+                    <circle cx="16" cy="9" r="3"/>
+                    <path d="M 13 20 C 13 17 15 16 18 16 C 21 16 23 17 23 20 Z"/>
+                </svg>
+            </button>
+            <button class="icon-btn home-btn hidden" id="back-btn" title="Kembali ke Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 3 9 L 12 2 L 21 9 L 21 22 L 3 22 Z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="header-center" id="screen-title">Kids Drawing</div>
+
+        <div class="header-right">
+            <button class="icon-btn" id="sound-btn" title="Audio On/Off">
+                <svg id="sound-icon-on" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                </svg>
+                <svg id="sound-icon-off" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/>
+                    <line x1="23" y1="9" x2="17" y2="15"/>
+                    <line x1="17" y1="9" x2="23" y2="15"/>
+                </svg>
+            </button>
+            <button class="icon-btn" id="fullscreen-btn" title="Layar Penuh (Fullscreen)">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- App Viewport -->
+    <main id="app-viewport">
+        <!-- 1. Main Menu Cards View -->
+        <div id="menu-view" class="menu-grid">
+            <!-- Card 1: DRAW & COLOR -->
+            <div class="game-card" data-mode="draw_color">
+                <div class="card-preview">
+                    <!-- Authentic Baby Dinosaur matching tablet reference -->
+                    <svg viewBox="0 0 200 150" width="100%" height="100%">
+                        <!-- Gentle Tan Ground -->
+                        <path d="M 0 118 Q 100 114 200 118 L 200 150 L 0 150 Z" fill="#e2d2b5"/>
+                        <!-- Soft Background Hill -->
+                        <path d="M 0 110 Q 70 90 140 102 Q 170 108 200 100 L 200 120 L 0 120 Z" fill="#eedcb8"/>
+                        <!-- Scalloped Coral-Pink Tree -->
+                        <path d="M 158 72 C 160 88 168 105 172 120 L 186 120 C 182 105 174 88 170 72 Z" fill="#a06028"/>
+                        <!-- Tree leaf tufts -->
+                        <ellipse cx="160" cy="46" rx="18" ry="14" fill="#fc8181"/>
+                        <ellipse cx="180" cy="42" rx="16" ry="14" fill="#f687b3"/>
+                        <ellipse cx="170" cy="62" rx="19" ry="13" fill="#f687b3"/>
+                        <!-- Left Pebbles & Shrub -->
+                        <ellipse cx="18" cy="118" rx="10" ry="15" fill="#9f7aea"/>
+                        <ellipse cx="28" cy="122" rx="12" ry="7" fill="#4fd1c5"/>
+                        <!-- Dinosaur Back Legs -->
+                        <rect x="74" y="94" width="14" height="28" rx="7" fill="#ffffff" stroke="#2f855a" stroke-width="2.5"/>
+                        <rect x="108" y="94" width="14" height="28" rx="7" fill="#ffffff" stroke="#2f855a" stroke-width="2.5"/>
+                        <!-- Dinosaur Body & Neck -->
+                        <path d="M 52 56 C 38 56 32 44 38 32 C 43 20 62 20 72 30 C 80 40 78 54 72 66 C 70 75 70 82 78 88 C 90 85 106 85 118 90 C 130 96 142 88 150 72 C 154 64 150 59 146 62 C 140 67 134 78 126 88 C 120 94 116 104 108 106 C 96 109 82 109 70 104 C 62 100 60 92 62 84 C 64 74 60 65 52 56 Z" fill="#ffffff" stroke="#2f855a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- Dinosaur Front Legs -->
+                        <rect x="62" y="94" width="15" height="32" rx="7.5" fill="#ffffff" stroke="#2f855a" stroke-width="2.8"/>
+                        <rect x="96" y="94" width="15" height="32" rx="7.5" fill="#ffffff" stroke="#2f855a" stroke-width="2.8"/>
+                        <!-- Dotted Tracing Trail around Head -->
+                        <circle cx="56" cy="38" r="22" fill="none" stroke="#38a169" stroke-width="1.8" stroke-dasharray="2,3"/>
+                        <!-- Cute Eye & Sparkle -->
+                        <circle cx="56" cy="38" r="4.8" fill="#1a202c"/>
+                        <circle cx="54.5" cy="36.5" r="1.6" fill="#ffffff"/>
+                        <path d="M 54 30 Q 58 27 62 29" fill="none" stroke="#2f855a" stroke-width="1.5" stroke-linecap="round"/>
+                        <!-- Little Smiling Mouth -->
+                        <path d="M 38 44 Q 42 49 48 45" fill="none" stroke="#2f855a" stroke-width="1.8" stroke-linecap="round"/>
+                        <!-- Rosy Cheek -->
+                        <ellipse cx="44" cy="48" rx="3.5" ry="2.2" fill="#fc8181"/>
+                        <!-- Neck dots -->
+                        <circle cx="64" cy="68" r="2.2" fill="#38a169"/>
+                        <circle cx="67" cy="76" r="2.2" fill="#38a169"/>
+                        <!-- Star hairpin -->
+                        <circle cx="72" cy="27" r="4" fill="#805ad5"/>
+                    </svg>
+                </div>
+                <div class="card-title">DRAW & COLOR</div>
+            </div>
+
+            <!-- Card 2: PIXEL ART -->
+            <div class="game-card" data-mode="pixel_art">
+                <div class="card-preview">
+                    <svg viewBox="0 0 140 140" width="85%" height="85%">
+                        <defs>
+                            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.8"/>
+                            </pattern>
+                        </defs>
+                        <rect width="140" height="140" fill="#ffffff"/>
+                        <rect width="140" height="140" fill="url(#grid)"/>
+                        <rect x="30" y="20" width="10" height="20" fill="#744210"/>
+                        <rect x="20" y="20" width="10" height="10" fill="#744210"/>
+                        <rect x="40" y="30" width="10" height="10" fill="#744210"/>
+                        <rect x="90" y="20" width="10" height="20" fill="#744210"/>
+                        <rect x="100" y="20" width="10" height="10" fill="#744210"/>
+                        <rect x="80" y="30" width="10" height="10" fill="#744210"/>
+                        <rect x="40" y="40" width="50" height="40" fill="#dd6b20"/>
+                        <rect x="50" y="50" width="10" height="10" fill="#1a202c"/>
+                        <rect x="70" y="50" width="10" height="10" fill="#1a202c"/>
+                        <rect x="55" y="70" width="20" height="10" fill="#e53e3e"/>
+                        <text x="35" y="98" font-size="9" fill="#dd6b20" font-weight="bold">+ ▲ ▲ + + +</text>
+                        <text x="40" y="110" font-size="9" fill="#dd6b20" font-weight="bold">▲ ▲ ▲ + ▲</text>
+                        <text x="45" y="122" font-size="9" fill="#744210" font-weight="bold">■ ■ ■ ■</text>
+                    </svg>
+                </div>
+                <div class="card-title">PIXEL ART</div>
+            </div>
+
+            <!-- Card 3: MANDALA -->
+            <div class="game-card" data-mode="mandala">
+                <div class="card-preview">
+                    <svg viewBox="0 0 160 130" width="90%" height="90%">
+                        <rect x="5" y="5" width="150" height="120" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+                        <line x1="80" y1="5" x2="80" y2="125" stroke="#cbd5e0" stroke-width="2" stroke-dasharray="4,4"/>
+                        <path d="M 80 25 Q 125 25 125 70 Q 125 110 80 115" fill="none" stroke="#63b3ed" stroke-width="3" stroke-dasharray="2,6"/>
+                        <circle cx="100" cy="65" r="10" fill="none" stroke="#63b3ed" stroke-width="2" stroke-dasharray="2,4"/>
+                        <circle cx="102" cy="64" r="5" fill="#2d3748"/>
+                        <circle cx="100" cy="62" r="2" fill="#ffffff"/>
+                        <path d="M 80 75 Q 86 80 80 85" fill="none" stroke="#63b3ed" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="card-title">MANDALA</div>
+            </div>
+
+            <!-- Card 4: COLOR BY NUMBER -->
+            <div class="game-card" data-mode="color_by_number">
+                <div class="card-preview">
+                    <svg viewBox="0 0 160 130" width="90%" height="90%">
+                        <ellipse cx="80" cy="110" rx="60" ry="18" fill="#e2e8f0" stroke="#a0aec0" stroke-width="2"/>
+                        <text x="35" y="112" font-size="11" font-weight="bold" fill="#718096">4</text>
+                        <path d="M 60 70 C 55 45 105 45 100 70 C 110 85 105 105 80 108 C 55 105 50 85 60 70 Z" fill="#ffffff" stroke="#4a5568" stroke-width="2.5"/>
+                        <circle cx="72" cy="62" r="3.5" fill="#1a202c"/>
+                        <circle cx="88" cy="62" r="3.5" fill="#1a202c"/>
+                        <polygon points="77,68 83,68 80,74" fill="#ed8936"/>
+                        <text x="45" y="45" font-size="10" font-weight="bold" fill="#718096">3</text>
+                        <text x="115" y="45" font-size="10" font-weight="bold" fill="#718096">3</text>
+                        <text x="80" y="92" font-size="10" font-weight="bold" fill="#718096">1</text>
+                        <text x="65" y="85" font-size="9" font-weight="bold" fill="#718096">2</text>
+                        <text x="92" y="85" font-size="9" font-weight="bold" fill="#718096">2</text>
+                    </svg>
+                </div>
+                <div class="card-title">COLOR BY NUMBER</div>
+            </div>
+
+            <!-- Card 5: DRAWING -->
+            <div class="game-card" data-mode="drawing">
+                <div class="card-preview">
+                    <svg viewBox="0 0 160 130" width="90%" height="90%">
+                        <rect x="5" y="5" width="150" height="120" rx="6" fill="#ffffff" stroke="#cbd5e0" stroke-width="1.5"/>
+                        <pattern id="notepad-grid" width="12" height="12" patternUnits="userSpaceOnUse">
+                            <path d="M 12 0 L 0 0 0 12" fill="none" stroke="#edf2f7" stroke-width="1"/>
+                        </pattern>
+                        <rect x="5" y="5" width="150" height="120" fill="url(#notepad-grid)"/>
+                        <circle cx="35" cy="30" r="8" fill="none" stroke="#ecc94b" stroke-width="2"/>
+                        <line x1="35" y1="16" x2="35" y2="20" stroke="#ecc94b" stroke-width="2"/>
+                        <line x1="22" y1="30" x2="26" y2="30" stroke="#ecc94b" stroke-width="2"/>
+                        <line x1="44" y1="30" x2="48" y2="30" stroke="#ecc94b" stroke-width="2"/>
+                        <path d="M 25 105 L 45 105 M 30 105 L 30 115 M 40 105 L 40 115" stroke="#dd6b20" stroke-width="2"/>
+                        <path d="M 50 118 Q 90 114 135 118" stroke="#48bb78" stroke-width="2"/>
+                        <g transform="translate(75, 25) rotate(40)">
+                            <rect x="0" y="0" width="45" height="24" rx="4" fill="#a0aec0"/>
+                            <rect x="0" y="0" width="45" height="4.8" fill="#e53e3e"/>
+                            <rect x="0" y="4.8" width="45" height="4.8" fill="#ed8936"/>
+                            <rect x="0" y="9.6" width="45" height="4.8" fill="#ecc94b"/>
+                            <rect x="0" y="14.4" width="45" height="4.8" fill="#48bb78"/>
+                            <rect x="0" y="19.2" width="45" height="4.8" fill="#4299e1"/>
+                            <polygon points="0,0 -16,12 0,24" fill="#feebc8"/>
+                            <polygon points="-10,8 -16,12 -10,16" fill="#805ad5"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="card-title">DRAWING</div>
+            </div>
+
+            <!-- Card 6: SCRATCH -->
+            <div class="game-card" data-mode="scratch">
+                <div class="card-preview">
+                    <svg viewBox="0 0 160 130" width="90%" height="90%">
+                        <rect x="5" y="5" width="150" height="120" rx="8" fill="#c4b5fd"/>
+                        <ellipse cx="105" cy="80" rx="35" ry="30" fill="#b794f4"/>
+                        <circle cx="95" cy="75" r="5" fill="#1a202c"/>
+                        <circle cx="115" cy="75" r="5" fill="#1a202c"/>
+                        <circle cx="93" cy="73" r="1.5" fill="#ffffff"/>
+                        <circle cx="113" cy="73" r="1.5" fill="#ffffff"/>
+                        <ellipse cx="105" cy="84" rx="3.5" ry="2.5" fill="#2d3748"/>
+                        <ellipse cx="80" cy="55" rx="10" ry="14" fill="#9f7aea"/>
+                        <ellipse cx="125" cy="55" rx="10" ry="14" fill="#9f7aea"/>
+                        <path d="M 5 5 L 80 5 C 70 30 50 60 70 90 C 80 100 60 125 5 125 Z" fill="#ffffff" opacity="0.95"/>
+                    </svg>
+                </div>
+                <div class="card-title">SCRATCH</div>
+            </div>
+        </div>
+
+        <!-- 2. Active Mode Viewport -->
+        <div id="mode-view" class="mode-view hidden">
+            <!-- Mode Category Subheader with Level / Template Carousel Tabs -->
+            <div class="mode-template-bar" id="mode-template-bar">
+                <!-- Dynamically populated template selector tabs -->
+            </div>
+
+            <div class="mode-content" id="mode-content">
+                <!-- Dynamically populated canvas / SVG by modes.js -->
+            </div>
+            
+            <div class="mode-toolbar" id="mode-toolbar">
+                <!-- Dynamically populated toolbar -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Chef Bear Mascot Badge in Bottom Right ("New") -->
+    <div class="promo-badge" id="promo-btn">
+        <svg width="28" height="28" viewBox="0 0 40 40">
+            <ellipse cx="20" cy="24" rx="14" ry="12" fill="#975a16"/>
+            <circle cx="9" cy="16" r="5" fill="#975a16"/>
+            <circle cx="31" cy="16" r="5" fill="#975a16"/>
+            <circle cx="9" cy="16" r="2.5" fill="#dd6b20"/>
+            <circle cx="31" cy="16" r="2.5" fill="#dd6b20"/>
+            <ellipse cx="20" cy="27" rx="7" ry="5" fill="#feebc8"/>
+            <ellipse cx="20" cy="25" rx="3" ry="2" fill="#1a202c"/>
+            <circle cx="14" cy="22" r="2.5" fill="#1a202c"/>
+            <circle cx="26" cy="22" r="2.5" fill="#1a202c"/>
+            <path d="M 12 15 C 8 8 20 6 20 10 C 20 6 32 8 28 15 Z" fill="#ffffff" stroke="#cbd5e0" stroke-width="1.5"/>
+            <rect x="12" y="13" width="16" height="4" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+        </svg>
+        <span>New</span>
+    </div>
+
+    <script src="audio.js"></script>
+    <script src="draw-templates.js"></script>
+    <script src="modes.js"></script>
+</body>
+</html>

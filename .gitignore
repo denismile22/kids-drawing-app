@@ -1,0 +1,13 @@
+node_modules/
+.DS_Store
+*.log
+test_*.png
+test_*.svg
+rendered_*.png
+rendered_*.svg
+screenshot_*.png
+current_menu.png
+final_menu.png
+menu_capture_final.png
+original_dino_crop.png
+dino_illustration.png
